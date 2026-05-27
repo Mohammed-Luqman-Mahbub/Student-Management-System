@@ -4,18 +4,20 @@ nav {
     text-align: center;
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     ;
-    padding: 7px;
+    padding: 10px;
     
 }
 nav a{
     text-decoration: none;
-    padding: 3%;
+    padding: 10px;
     color: aliceblue;
     margin: auto;
     
 }
 nav a:hover{
-    color: yellow;
+    color: rgb(255, 255, 9);
+    border-radius: 7px;
+    background-color: rgb(122, 73, 73);
 }
 body{
     text-align: center;
