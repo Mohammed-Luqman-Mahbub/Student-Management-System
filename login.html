@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles.css">
-    <nav>
-        <a href="index.html" >Home </a>
-        <a href="login.html" >Login </a>
-        <a href="register.html" >Register</a>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <nav class="navbar" style="background-color: #500d0d;" data-bs-theme="light">
+        <a href="index.html" class="link-warning link-offset-2 link-underline-opacity-25 bg-success-hover">Home </a>
+        <a href="login.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Login </a>
+        <a href="register.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Register</a>
     </nav>
 </head>
+
 <body>
-    <h1>Login</h1>
+    <h1 class="text-center">Login</h1>
     <form action="Dashboard.html">
-        Email :<input type="email" required><br>
-        Password :<input type="password" required><br>
-        <input type="submit" >
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" required aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" required>
+        </div>
+        <div class="mb-3 form-check">
+        </div>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
     </form>
 </body>
+
 </html>

@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remove</title>
     <link rel="stylesheet" href="styles.css">
-    <nav>
-        <a href="Dashboard.html" >Dashboard </a>
-        <a href="viewstudent.html" > view student </a>
-        <a href="addstudent.html" >add student </a>
-        <a href="logout.html">Log Out</a>
-    </nav>
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <nav class="navbar" style="background-color: #500d0d;" data-bs-theme="light">
+        <a href="Dashboard.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 bg-success-hover">Dashboard</a>
+        <a href="viewstudent.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">view
+            Student</a>
+        <a href="addstudent.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Add
+            student</a>
+        <a href="logout.html"
+            class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Log Out</a>
+    </nav </head>
+
 <body>
-    <table border="0" >
-       <tr>
-            <th>Student ID </th>
-            <th>Name</th>
-            <th>Branch</th>
-            <th>CGPA</th>
-            
-       </tr>
-       
-    </table>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Students</h1>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Branch</th>
+                        <th>CGPA</th>
+                        <th colspan="2">Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
