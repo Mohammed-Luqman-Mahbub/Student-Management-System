@@ -2,8 +2,7 @@ nav {
     background-color: rgb(102, 0, 0);
     width: 100%;
     text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    ;
+    font-family: 'Poppins', sans-serif;
     padding: 10px;
 
 }
@@ -22,11 +21,14 @@ nav a:hover {
     background-color: rgb(122, 73, 73);
 }
 
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
     text-align: center;
     background-color: gainsboro;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    ;
+    font-family: 'Poppins', sans-serif;
 }
 
 form {
@@ -68,7 +70,6 @@ a {
 a:hover {
     color: rgb(255, 0, 0);
 }
-
 th,
 td {
     padding: 12px;
