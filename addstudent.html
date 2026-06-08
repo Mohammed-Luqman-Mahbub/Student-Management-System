@@ -29,26 +29,46 @@
         <a href="#" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
             data-bs-toggle="modal" data-bs-target="#logoutModal">Log Out</a>
     </nav>
+        <script>
+            function add(event) {
+                event.preventDefault();
+                let sid = document.getElementById("sid").value;
+                let name = document.getElementById("name").value;
+                let branch = document.getElementById("branch").value;
+                let cgpa = document.getElementById("cgpa").value;
+                const student = {
+                    id: parseInt(sid),
+                    name: name,
+                    branch: branch,
+                    cgpa: parseFloat(cgpa)
+                };
+                let students = JSON.parse(localStorage.getItem('students')) || [];
+                students.push(student);
+                localStorage.setItem('students', JSON.stringify(students));
+                alert("Student Added");
+                window.location.href = "viewstudent.html";
+            }
+        </script>
 </head>
 
 <body class="text-center">
     <h1> Add Student </h1>
-    <form action="viewstudent.html">
+    <form action="viewstudent.html" onsubmit="add(event)">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Student ID:</label>
-            <input type="number" class="form-control" required aria-describedby="emailHelp">
+            <input type="number" id="sid" class="form-control" required aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Student Name:</label>
-            <input type="text" class="form-control" required aria-describedby="emailHelp">
+            <input type="text" id="name" class="form-control" required aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Branch:</label>
-            <input type="text" class="form-control" required aria-describedby="emailHelp">
+            <input type="text" id="branch" class="form-control" required aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">CGPA :</label>
-            <input type="number" class="form-control" required aria-describedby="emailHelp">
+            <input type="number" id="cgpa" class="form-control" required aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-outline-success">Submit</button </form><br>
     </form>

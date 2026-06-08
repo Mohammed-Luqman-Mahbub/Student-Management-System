@@ -22,18 +22,37 @@
         <a href="contact.html"
             class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Contact Us</a>
     </nav>
+    <script>
+            function validatelogin(event) {
+                event.preventDefault(); 
+                let emailElement = document.getElementById("email");
+                let passElement = document.getElementById("pass");
+                const storedUserRaw = localStorage.getItem('registeredUser');
+                if (!storedUserRaw) {
+                    alert("Login failed, no registered user found. Try registering first.");
+                    return;
+                }
+                const registeredUser = JSON.parse(storedUserRaw);
+                if (emailElement.value === registeredUser.email && passElement.value === registeredUser.password) {
+                    alert("Login success!");
+                    window.location.href = "Dashboard.html";
+                } else {
+                    alert("Login failed, try to register once.");
+                }
+            }
+    </script>
 </head>
 
 <body>
     <h1 class="text-center">Login</h1>
-    <form action="Dashboard.html">
+    <form action="Dashboard.html" onsubmit="validatelogin(event)">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" required aria-describedby="emailHelp">
+            <input type="email" id="email" class="form-control" required aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" required>
+            <input type="password" id="pass" class="form-control" required>
         </div>
         <div class="mb-3 form-check">
         </div>

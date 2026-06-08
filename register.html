@@ -22,26 +22,47 @@
         <a href="contact.html"
             class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Contact Us</a>
     </nav>
+    <script>
+            function storedata(){
+                event.preventDefault();
+                let uname=document.getElementById("uname");
+                let email=document.getElementById("email");
+                let pass= document.getElementById("pass");
+                let cpass=document.getElementById("cpass");
+                if(cpass.value!== pass.value){
+                    alert("password and confirm password does not match");
+                     return;
+                }
+                const userAccount = {
+                    username: uname.value,
+                    email: email.value,
+                    password: pass.value
+                };
+                localStorage.setItem('registeredUser', JSON.stringify(userAccount));
+                alert("Registration successful! Redirecting to login page...");
+                window.location.href = "login.html";
+            }
+    </script>
 </head>
 
 <body class="text-center">
     <h1>Register</h1>
-    <form action="login.html">
+    <form action="login.html" onsubmit="storedata()">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">User Name</label>
-            <input type="email" class="form-control" required aria-describedby="emailHelp">
+            <input type="text" id="uname" class="form-control" required aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" required aria-describedby="emailHelp">
+            <input type="email" id="email" class="form-control" required aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" required>
+            <input type="password" id="pass" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">confirm Password</label>
-            <input type="password" class="form-control" required>
+            <input type="password" id="cpass" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-outline-success">Submit</button </form><br>
         <a href="login.html">Go to Login?</a>
