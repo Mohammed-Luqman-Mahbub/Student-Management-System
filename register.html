@@ -29,6 +29,11 @@
                 let email=document.getElementById("email");
                 let pass= document.getElementById("pass");
                 let cpass=document.getElementById("cpass");
+                let len=pass.value.length;
+                if(len <= 8){
+                    alert("Minimum length of password must be atleast 8");
+                    return;
+                }
                 if(cpass.value!== pass.value){
                     alert("password and confirm password does not match");
                      return;
@@ -44,7 +49,6 @@
             }
     </script>
 </head>
-
 <body class="text-center">
     <h1>Register</h1>
     <form action="login.html" onsubmit="storedata()">
