@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "username": "Luqman",
+      "email": "ad@gmail.com",
+      "password": "luqman12",
+      "id": "cTurun73nCw"
+    },
+    {
+      "username": "luq",
+      "email": "luq@gmail.com",
+      "password": "luq123456",
+      "id": "IwAHaTq5iLs"
+    }
+  ],
+  "students": [
+    {
+      "sid": 1,
+      "name": "Luqman",
+      "branch": "CSE-CS",
+      "cgpa": 9,
+      "id": "oEO0y8OseJE"
+    },
+    {
+      "sid": 2,
+      "name": "nauman",
+      "branch": "CSE-IOT",
+      "cgpa": 10,
+      "id": "HeSXyNnvc-A"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

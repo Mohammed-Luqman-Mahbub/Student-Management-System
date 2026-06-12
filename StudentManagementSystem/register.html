@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <div style="display: flex; align-items: center; justify-content: center;" >
+        <a href="index.html" ><img src="https://icons.veryicon.com/png/o/system/background-management-system-4/student-management-8.png"  style="width: 100px;" height="100 px"></a>
+        <h1 class="text-uppercase" style="background: #ffffff;color: #771515;">Student Management System</h1>
+    </div>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <nav class="navbar" style="background-color: #500d0d;" data-bs-theme="light">
+        <a href="index.html" class="link-warning link-offset-2 link-underline-opacity-25 bg-success-hover">Home </a>
+        <a href="login.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Login </a>
+        <a href="register.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Register</a>
+        <a href="contact.html"
+            class="link-warning link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Contact Us</a>
+    </nav>
+    <script>
+        async function storedata(event) {
+            event.preventDefault();
+
+            let uname = document.getElementById("uname");
+            let email = document.getElementById("email");
+            let pass = document.getElementById("pass");
+            let cpass = document.getElementById("cpass");
+
+            let len = pass.value.length;
+
+            if (len < 8) {
+                alert("Minimum length of password must be at least 8");
+                return;
+            }
+
+            if (cpass.value !== pass.value) {
+                alert("Password and Confirm Password do not match");
+                return;
+            }
+
+            const userAccount = {
+                username: uname.value,
+                email: email.value,
+                password: pass.value
+            };
+
+            try {
+            const response = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userAccount)
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to register user");
+            }   
+
+            const data = await response.json();
+            console.log("User Registered:", data);
+
+            alert("Registration successful!");
+            window.location.href = "login.html";
+
+            } catch (error) {
+            console.error(error);
+                alert("Something went wrong!");
+            }
+        }
+    </script>
+</head>
+<body class="text-center">
+    <h1>Register</h1>
+    <form action="login.html" onsubmit="storedata(event)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">User Name</label>
+            <input type="text" id="uname" class="form-control" required aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" id="email" class="form-control" required aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" id="pass" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">confirm Password</label>
+            <input type="password" id="cpass" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-outline-success">Submit</button </form><br>
+        <a href="login.html">Go to Login?</a>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+nav {
+    background-color: rgb(102, 0, 0);
+    width: 100%;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+
+}
+
+nav a {
+    text-decoration: none;
+    padding: 10px;
+    color: aliceblue;
+    margin: auto;
+
+}
+
+nav a:hover {
+    color: rgb(255, 255, 9);
+    border-radius: 7px;
+    background-color: rgb(122, 73, 73);
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    text-align: center;
+    background-color: gainsboro;
+    font-family: 'Poppins', sans-serif;
+}
+
+form {
+    text-align: start;
+    margin: auto;
+    width: 300px;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(255, 0, 0, .2);
+
+}
+
+input {
+    block-size: 20px;
+    display: flex;
+    border-radius: 5%;
+    /* border-style: groove; */
+    flex-direction: column;
+    height: 30px;
+    gap: 3px;
+}
+
+/* stripe table rows (not columns) */
+tbody tr:nth-child(even) {
+    background-color: rgb(231, 142, 142);
+}
+
+input:hover {
+    color: rgb(255, 136, 0);
+    background-color: #ffdede;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(255, 0, 0);
+}
+th,
+td {
+    padding: 12px;
+}
+
+form:hover {
+    background-color: #d6d1d1;
+}
+
+table {
+    margin: 0 auto;
+    width: 60%;
+    border: 2px solid black;
+}
