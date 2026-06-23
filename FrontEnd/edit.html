@@ -10,16 +10,11 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script>
         let currentStudentId = null;
-        function loadStudentToForm() {
+        async function loadStudentToForm() {
             const urlParams = new URLSearchParams(window.location.search);
-            currentStudentId = parseInt(urlParams.get('id'));
-            if (!currentStudentId) {
-                alert("No student selected!");
-                window.location.href = "viewstudent.html";
-                return;
-            }
-            const students = JSON.parse(localStorage.getItem('students')) || [];
-            const student = students.find(s => s.id === currentStudentId);
+            currentStudentId = urlParams.get('id');
+            const response=await fetch(`http://localhost:3000/students/${currentStudentId}`);
+            const student=await response.json();
             if (student) {
                 document.getElementById("sid").value = student.id;
                 document.getElementById("name").value = student.name;
@@ -30,20 +25,36 @@
                 window.location.href = "viewstudent.html";
             }
         }   
-        function updateStudent(event) {
-            event.preventDefault(); 
-            let students = JSON.parse(localStorage.getItem('students')) || [];
-            let studentIndex = students.findIndex(s => s.id === currentStudentId);
-            if (studentIndex !== -1) {
-                students[studentIndex].name = document.getElementById("name").value.trim();
-                students[studentIndex].branch = document.getElementById("branch").value.trim();
-                students[studentIndex].cgpa = parseFloat(document.getElementById("cgpa").value);
-                localStorage.setItem('students', JSON.stringify(students));
+        async function updateStudent(event) {
+            event.preventDefault();
+            const response = await fetch(`http://localhost:3000/students/${currentStudentId}`);
+            const students = await response.json();
+            // let studentIndex = students.findIndex(
+            //     s => s.id === currentStudentId
+            // );
+           //if (studentIndex !== -1) {
+                students.name =
+                document.getElementById("name").value.trim();
+                students.branch =
+                document.getElementById("branch").value.trim();
+                students.cgpa =
+                parseFloat(document.getElementById("cgpa").value);
+
+                await fetch(
+                `http://localhost:3000/students/${currentStudentId}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(students)
+                }
+                );
                 alert("Student details updated successfully!");
-                window.location.href = "viewstudent.html"; 
-            } else {
-                alert("Error updating student details.");
-            }
+                window.location.href = "viewstudent.html";
+            //     } else {
+            //     alert("Error updating student details.");
+            // }
         }
         document.addEventListener("DOMContentLoaded", loadStudentToForm);
     </script>

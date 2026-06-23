@@ -28,9 +28,11 @@
             data-bs-toggle="modal" data-bs-target="#logoutModal">Log Out</a>
     </nav>
     <script>
-        function loadStudents() {
+        async function loadStudents() {
             const tableBody = document.getElementById("tbody");
-            const students = JSON.parse(localStorage.getItem("students")) || [];
+            const response=await fetch("http://localhost:3000/students");
+            const students=await response.json();
+            // const students = JSON.parse(localStorage.getItem("students")) || [];
             tableBody.innerHTML = "";
             if (students.length === 0) {
                 tableBody.innerHTML = `<tr><td colspan="6" class="text-muted py-3">No students found. Add a student first!</td></tr>`;
@@ -53,11 +55,14 @@
                 tableBody.appendChild(row);
             });
         }
-        function deleteStudent(index) {
+        async function deleteStudent(index) {
             if (confirm("Are you sure you want to remove this student?")) {
-                let students = JSON.parse(localStorage.getItem("students")) || [];
-                students.splice(index, 1);
-                localStorage.setItem("students", JSON.stringify(students));
+                const response=await fetch("http://localhost:3000/students");
+                const students=await response.json();
+                const sid=students[index].id;
+                await fetch(`http://localhost:3000/students/${sid}`, {
+                 method: "DELETE"
+                });
                 loadStudents();
             }
         }   
